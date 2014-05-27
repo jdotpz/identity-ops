@@ -18,7 +18,19 @@ conn_elb = boto.ec2.elb.connect_to_region(region)
 #import logging
 #logging.basicConfig(level=logging.DEBUG)
 
-policy_attributes = {"ADH-AES128-GCM-SHA256": False,
+policy_attributes = {"ECDHE-ECDSA-AES128-GCM-SHA256": True,
+                    "ECDHE-RSA-AES128-GCM-SHA256": True,
+                    "ECDHE-ECDSA-AES128-SHA256": True,
+                    "ECDHE-RSA-AES128-SHA256": True,
+                    "ECDHE-ECDSA-AES128-SHA": True,
+                    "ECDHE-RSA-AES128-SHA": True,
+                    "ECDHE-ECDSA-AES256-GCM-SHA384": True,
+                    "ECDHE-RSA-AES256-GCM-SHA384": True,
+                    "ECDHE-ECDSA-AES256-SHA384": True,
+                    "ECDHE-RSA-AES256-SHA384": True,
+                    "ECDHE-RSA-AES256-SHA": True,
+                    "ECDHE-ECDSA-AES256-SHA": True,
+                    "ADH-AES128-GCM-SHA256": False,
                     "ADH-AES256-GCM-SHA384": False,
                     "ADH-AES128-SHA": False,
                     "ADH-AES128-SHA256": False,
@@ -60,18 +72,6 @@ policy_attributes = {"ADH-AES128-GCM-SHA256": False,
                     "DHE-RSA-CAMELLIA128-SHA": False,
                     "DHE-RSA-CAMELLIA256-SHA": False,
                     "DHE-RSA-SEED-SHA": False,
-                    "ECDHE-ECDSA-AES128-GCM-SHA256": True,
-                    "ECDHE-RSA-AES128-GCM-SHA256": True,
-                    "ECDHE-ECDSA-AES128-SHA256": True,
-                    "ECDHE-RSA-AES128-SHA256": True,
-                    "ECDHE-ECDSA-AES128-SHA": True,
-                    "ECDHE-RSA-AES128-SHA": True,
-                    "ECDHE-ECDSA-AES256-GCM-SHA384": True,
-                    "ECDHE-RSA-AES256-GCM-SHA384": True,
-                    "ECDHE-ECDSA-AES256-SHA384": True,
-                    "ECDHE-RSA-AES256-SHA384": True,
-                    "ECDHE-RSA-AES256-SHA": True,
-                    "ECDHE-ECDSA-AES256-SHA": True,
                     "EDH-DSS-DES-CBC3-SHA": False,
                     "EDH-DSS-DES-CBC-SHA": False,
                     "EDH-RSA-DES-CBC3-SHA": False,
@@ -108,9 +108,11 @@ policy_attributes = {"ADH-AES128-GCM-SHA256": False,
                     "RC2-CBC-MD5": False,
                     "RC4-MD5": False,
                     "RC4-SHA": True,
-                    "SEED-SHA": False}
+                    "SEED-SHA": False,
+                    "Server-Defined-Cipher-Order": True
+                    }
 
-policy_name = 'Mozilla-Security-Assurance-Ciphersuite-Policy-v-1-3'
+policy_name = 'Mozilla-Security-Assurance-Ciphersuite-Policy-v-1-4'
 
 # Create the Ciphersuite Policy
 params = {'LoadBalancerName': load_balancer_name,
